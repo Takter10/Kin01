@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+        android:id="@+id/nav_camera"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="รายการโปรด"/>
+        <item
+        android:id="@+id/nav_gallery"
+        android:icon="@drawable/ic_photo_library_black_24dp"
+        android:title="ร้านที่ติดตาม" />
+        <item
+        android:id="@+id/nav_slideshow"
+        android:icon="@drawable/ic_history_black_24dp"
+        android:title="ประวัติ"/>
+
+    </group>
+
+    <item android:title=" ">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_build_black_24dp"
+                android:title="ตั้งค่า"/>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_send_black_24dp"
+                android:title="เกี่ยวกับ/ติดต่อ"/>
+            <item
+                android:id="@+id/log_nav"
+                android:icon="@drawable/ic_power_settings_new_black_24dp"
+                android:title="ออกจากระบบ"/>
+        </menu>
+    </item>
+
+</menu>
