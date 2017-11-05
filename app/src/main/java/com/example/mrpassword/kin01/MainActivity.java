@@ -116,11 +116,14 @@ public class MainActivity extends AppCompatActivity {
 
         myDialog = new Dialog(this);
     }
+
+
+    // POP UP FOOD //////////////////////////////////food
     public void ShowPopup(View v) {
         TextView txtclose;
         Button btnFollow;
         myDialog.setContentView(R.layout.popup_food);
-        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        txtclose = (TextView) myDialog.findViewById(R.id.txtclose);
         txtclose.setText("M");
         btnFollow = (Button) myDialog.findViewById(R.id.btnfollow);
         txtclose.setOnClickListener(new View.OnClickListener() {
@@ -132,9 +135,7 @@ public class MainActivity extends AppCompatActivity {
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
-
-
-
+    //////////////////////////////////////////////////////food
 
     private void setToolbar1() {
         setSupportActionBar(toolbar1);
@@ -160,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
         toggle.onConfigurationChanged(newConfig);
     }
 
+
+    //menu bar right corner /////////////////////////////////////
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (toggle.onOptionsItemSelected(item))
