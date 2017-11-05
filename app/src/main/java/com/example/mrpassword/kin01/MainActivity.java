@@ -1,5 +1,8 @@
 package com.example.mrpassword.kin01;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +15,9 @@ import android.support.v7.widget.Toolbar;
 import android.content.res.Configuration;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -20,10 +26,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
+    Dialog myDialog;
 
     private Toolbar toolbar1;
     ActionBarDrawerToggle toggle;
     private DrawerLayout drawerLayout;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener bnvSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -106,7 +114,27 @@ public class MainActivity extends AppCompatActivity {
         bnv.setOnNavigationItemSelectedListener(bnvSelectedListener);
         bnv.setOnNavigationItemReselectedListener(bnvReselectedListener);
 
+        myDialog = new Dialog(this);
     }
+    public void ShowPopup(View v) {
+        TextView txtclose;
+        Button btnFollow;
+        myDialog.setContentView(R.layout.popup_food);
+        txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
+        txtclose.setText("M");
+        btnFollow = (Button) myDialog.findViewById(R.id.btnfollow);
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
+
+
 
     private void setToolbar1() {
         setSupportActionBar(toolbar1);
