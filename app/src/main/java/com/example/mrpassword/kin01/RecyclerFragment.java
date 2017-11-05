@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.NumberPicker;
 
+import com.google.firebase.database.DatabaseReference;
+
 
 /**
  * Created by MrPassword on 30/10/2560.
@@ -24,10 +26,11 @@ public class RecyclerFragment extends Fragment {
     private RVAdapter adapter;
     private Toolbar toolbar2;
 
-
+    DatabaseReference Food ;
     public RecyclerFragment(){
 
     }
+
     public static RecyclerFragment newInstance(int numberOfItem){
         RecyclerFragment rvf = new RecyclerFragment();
         rvf.numberOfItem = numberOfItem;

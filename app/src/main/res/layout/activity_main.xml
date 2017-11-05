@@ -17,7 +17,6 @@
         app:headerLayout="@layout/drawer_header"
         android:layout_gravity="start"
         app:menu="@menu/menu_drawer"
-
         />
 
 
