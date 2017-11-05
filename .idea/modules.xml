@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Kin01.iml" filepath="$PROJECT_DIR$/.idea/Kin01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kin01.iml" filepath="$PROJECT_DIR$/Kin01.iml" />
       <module fileurl="file://F:\ADSAVE\Kin01\Kin01.iml" filepath="F:\ADSAVE\Kin01\Kin01.iml" />
+      <module fileurl="file://C:\Users\TnKstudio\Documents\ProjectSE01\Kin01\.idea\Kin01.iml" filepath="C:\Users\TnKstudio\Documents\ProjectSE01\Kin01\.idea\Kin01.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://F:\ADSAVE\Kin01\app\app.iml" filepath="F:\ADSAVE\Kin01\app\app.iml" />
     </modules>
