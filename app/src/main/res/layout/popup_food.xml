@@ -6,6 +6,7 @@
     android:background="@color/colorPrimaryDark"
     android:padding="5dp"
     android:layout_gravity="center">
+
     <TextView
         android:id="@+id/txtclose"
         android:layout_width="30dp"
@@ -26,11 +27,11 @@
             android:layout_height="153dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:src="@drawable/toua" />
+            android:src="@drawable/steak" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Patiphan Marak"
+            android:text="Steak Fk"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
@@ -38,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CEO Google"
+            android:text="taste is good as fuck"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"/>
@@ -117,7 +118,7 @@
         android:id="@+id/btnfollow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Follow Me"
+        android:text="ร้านอาหาร"
         android:layout_marginTop="25dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/buttonstyle"
