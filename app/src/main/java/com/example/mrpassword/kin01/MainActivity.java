@@ -27,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity {
 
     Dialog myDialog;
-
     private Toolbar toolbar1;
     ActionBarDrawerToggle toggle;
     private DrawerLayout drawerLayout;
