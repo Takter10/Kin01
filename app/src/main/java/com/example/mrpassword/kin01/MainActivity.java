@@ -1,6 +1,7 @@
 package com.example.mrpassword.kin01;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -41,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
                             recycleFragment();
                             return true;
                         case R.id.lb_bar:
-                            libaryFragment();
+                            //libaryFragment();
+                            Intent homeInent = new Intent(MainActivity.this,Home.class);
+                            startActivity(homeInent);
                             setToolbar1();
                             toggle.syncState();
                             return true;
