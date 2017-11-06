@@ -42,9 +42,7 @@ public class MainActivity extends AppCompatActivity {
                             recycleFragment();
                             return true;
                         case R.id.lb_bar:
-                            //libaryFragment();
-                            Intent homeInent = new Intent(MainActivity.this,Home.class);
-                            startActivity(homeInent);
+                            libaryFragment();
                             setToolbar1();
                             toggle.syncState();
                             return true;

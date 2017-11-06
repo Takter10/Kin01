@@ -7,8 +7,7 @@ package com.example.mrpassword.kin01;
 public class Food {
     private String FID,Name,Pic ;
 
-    public Food(){
-
+    public Food() {
     }
 
     public Food(String FID, String name, String pic) {
