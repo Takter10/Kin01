@@ -85,6 +85,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 final Food clickItem = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
+
+                    //// Open new page///////////////////////////////////////////////////////////
                     public void onClick(View view, int position, boolean isLongClick) {
                         Toast.makeText(Home.this,""+clickItem.getName(),Toast.LENGTH_LONG).show();
                     }
