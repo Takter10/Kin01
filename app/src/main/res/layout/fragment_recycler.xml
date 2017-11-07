@@ -22,14 +22,6 @@
             app:expandedTitleTextAppearance="@style/ExpandedAppBar"
             app:collapsedTitleTextAppearance="@style/CollapedAppBar">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar2"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:titleTextColor="@color/cardview_dark_background"
-                app:title="Home"/>
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,10 +35,18 @@
                 android:backgroundTint="@color/random"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Random"
+                android:text="    Random"
                 android:layout_gravity="center"
                 android:onClick="ShowPopup"
                 />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar2"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="Home"
+                app:titleTextColor="@color/cardview_dark_background" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

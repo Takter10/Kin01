@@ -1,4 +1,4 @@
-package com.example.mrpassword.kin01;
+package com.example.mrpassword.kin01.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.ViewOutlineProvider;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.mrpassword.kin01.R;
 
 /**
  * Created by TnKstudio on 4/11/2560.

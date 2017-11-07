@@ -18,11 +18,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar1;
     ActionBarDrawerToggle toggle;
     private DrawerLayout drawerLayout;
-
+    String ranName , ranImage ;
+    TextView txtclose;
+    Button btnFollow;
 
     private BottomNavigationView.OnNavigationItemSelectedListener bnvSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -95,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Test Database
+        //Firebase
+
         // Write a message to the database
 
         toolbar1 = findViewById(R.id.toolbar1);
@@ -120,8 +130,6 @@ public class MainActivity extends AppCompatActivity {
 
     // POP UP FOOD //////////////////////////////////food
     public void ShowPopup(View v) {
-        TextView txtclose;
-        Button btnFollow;
         myDialog.setContentView(R.layout.popup_food);
         txtclose = (TextView) myDialog.findViewById(R.id.txtclose);
         txtclose.setText("X");
@@ -134,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
+        TextView txtRandomName = (TextView) myDialog.findViewById(R.id.ranName);
+        ImageView imageView = (ImageView) myDialog.findViewById(R.id.ranImage);
+        txtRandomName.setText("Takter");
+
     }
     //////////////////////////////////////////////////////food
 
