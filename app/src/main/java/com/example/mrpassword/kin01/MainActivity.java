@@ -17,17 +17,24 @@ import android.content.res.Configuration;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewDebug;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
+import java.text.DecimalFormat;
 import java.util.Random;
 
 
@@ -40,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     String ranName , ranImage ;
     TextView txtclose;
     Button btnFollow;
+    String selectchild ;
+    Food food = new Food();
 
     private BottomNavigationView.OnNavigationItemSelectedListener bnvSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -97,12 +106,57 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+    //Random Function
+    public static int getRandomInteger(int maximum, int minimum){
+        return ((int) (Math.random()*(maximum - minimum))) + minimum;
+    }
+    public static int safeLongToInt(long l) {
+        if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException
+                    (l + " cannot be cast to int without changing its value.");
+        }
+        return (int) l;
+    }
+
+    //End
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Test Database
+
+        FirebaseDatabase.getInstance().getReference().child("Food").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int childcount = safeLongToInt(dataSnapshot.getChildrenCount());
+//                selectchild = childcount+"";
+                if(childcount==0)return;
+                Random rand = new Random();
+                int random = rand.nextInt(childcount);
+                selectchild = Integer.toString(random);
+                FirebaseDatabase.getInstance().getReference().child("Food").child(selectchild).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        food.setName(dataSnapshot.child("Name").getValue().toString());
+                        food.setPic(dataSnapshot.child("Pic").getValue().toString());
+                        food.setFID(dataSnapshot.child("FID").getValue().toString());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         //Firebase
 
         // Write a message to the database
@@ -144,7 +198,11 @@ public class MainActivity extends AppCompatActivity {
         myDialog.show();
         TextView txtRandomName = (TextView) myDialog.findViewById(R.id.ranName);
         ImageView imageView = (ImageView) myDialog.findViewById(R.id.ranImage);
-        txtRandomName.setText("Takter");
+        TextView textD = (TextView) myDialog.findViewById(R.id.food_dis);
+        txtRandomName.setText(food.getName());
+        Picasso.with(this).load(food.getPic()).into(imageView);
+        textD.setText(food.getFID());
+
 
     }
     //////////////////////////////////////////////////////food

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.NumberPicker;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
@@ -45,13 +46,15 @@ public class RecyclerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_recycler,container,false);
-
         toolbar2 = v.findViewById(R.id.toolbar2);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar2);
         ActionBar ab = ((AppCompatActivity)getActivity()).getSupportActionBar();
         ab.setHomeButtonEnabled(true);
         ab.setDisplayHomeAsUpEnabled(true);
-
+        //Firebase
+        FirebaseDatabase database ;
+        DatabaseReference databaseReference;
+        //Firebase End
 
         rv = v.findViewById(R.id.recycler);
         if(savedInstanceState != null)
