@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mrpassword.kin01.Food;
 import com.example.mrpassword.kin01.Interface.ItemClickListener;
 import com.example.mrpassword.kin01.R;
 
@@ -15,7 +16,7 @@ import com.example.mrpassword.kin01.R;
 public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView txtMenuName ;
     public ImageView imageView ;
-
+    Food food = new Food();
     private ItemClickListener itemClickListener;
 
     public MenuViewHolder(View itemView) {
@@ -23,7 +24,8 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         txtMenuName = (TextView)itemView.findViewById(R.id.menu_name);
         imageView = (ImageView)itemView.findViewById(R.id.menu_image);
 
-        itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
+
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {

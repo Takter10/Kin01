@@ -46,15 +46,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         database = FirebaseDatabase.getInstance();
         Food = database.getReference("Food");
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -76,12 +67,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     private void LoadMenu() {
-        FirebaseRecyclerAdapter<Food,MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Food, MenuViewHolder>(Food.class,R.layout.manu_item,MenuViewHolder.class,Food) {
+        TypeF typeF = new TypeF();
+        FirebaseRecyclerAdapter<Food,MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Food, MenuViewHolder>(Food.class,R.layout.manu_item,MenuViewHolder.class,Food.child(getIntent().getType())) {
             @Override
             protected void populateViewHolder(MenuViewHolder viewHolder, Food model, int position) {
-                viewHolder.txtMenuName.setText(model.getName());
-                Picasso.with(getBaseContext()).load(model.getPic())
-                        .into(viewHolder.imageView);
+                //if (model.getFID().substring(0,2).equals("FR")) {
+                    viewHolder.txtMenuName.setText(model.getName());
+                    Picasso.with(getBaseContext()).load(model.getPic())
+                            .into(viewHolder.imageView);
+                //}
                 final Food clickItem = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override

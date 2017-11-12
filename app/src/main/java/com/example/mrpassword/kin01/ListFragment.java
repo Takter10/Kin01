@@ -17,45 +17,40 @@ import android.widget.Toast;
  * Created by MrPassword on 30/10/2560.
  */
 
-public class LibaryFragment extends Fragment {
+public class ListFragment extends Fragment {
 
-    public LibaryFragment() {
+    public ListFragment() {
     }
 
-    public static LibaryFragment newInstance(String text) {
-        LibaryFragment lf = new LibaryFragment();
+    public static SearchFragment newInstance(String text) {
+        SearchFragment sf = new SearchFragment();
         Bundle blackbox = new Bundle();
         blackbox.putString("text", text);
-        lf.setArguments(blackbox);
-        return lf;
+        sf.setArguments(blackbox);
+        return sf;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle saveInstanceState) {
+        final TypeF typeF = new TypeF();
         View v = inflater.inflate(R.layout.fragment_libary, container, false);
         Button FR = (Button)v.findViewById(R.id.FR);
         FR.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
                 Intent homeInent = new Intent(getActivity(),Home.class);
-                homeInent.setType("FR");
                 startActivity(homeInent);
+                typeF.setName("FR");
             }
         });
         Button FN = (Button)v.findViewById(R.id.FN);
         FN.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                typeF.setName("FN");
                 Intent homeInent = new Intent(getActivity(),Home.class);
-                homeInent.setType("FN");
                 startActivity(homeInent);
             }
         });
@@ -63,16 +58,13 @@ public class LibaryFragment extends Fragment {
         FD.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                typeF.setName("FD");
                 Intent homeInent = new Intent(getActivity(),Home.class);
-                homeInent.setType("FD");
                 startActivity(homeInent);
             }
         });
         return v;
+
     }
-
-
-
-
 
 }

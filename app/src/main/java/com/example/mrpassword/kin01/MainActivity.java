@@ -35,6 +35,7 @@ import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnFollow;
     String selectchild ;
     Food food = new Food();
+    TypeF typeF = new TypeF();
 
     private BottomNavigationView.OnNavigationItemSelectedListener bnvSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -105,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.container, SearchFragment.newInstance("Search"))
                 .commit();
     }
+    private void listfragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, ListFragment.newInstance("List"))
+                .commit();
+
+    }
 
     //Random Function
     public static int getRandomInteger(int maximum, int minimum){
@@ -124,42 +132,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Test Database
-
-        FirebaseDatabase.getInstance().getReference().child("Food").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                int childcount = safeLongToInt(dataSnapshot.getChildrenCount());
-//                selectchild = childcount+"";
-                if(childcount==0)return;
-                Random rand = new Random();
-                int random = rand.nextInt(childcount);
-                selectchild = Integer.toString(random);
-                FirebaseDatabase.getInstance().getReference().child("Food").child(selectchild).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        food.setName(dataSnapshot.child("Name").getValue().toString());
-                        food.setPic(dataSnapshot.child("Pic").getValue().toString());
-                        food.setFID(dataSnapshot.child("FID").getValue().toString());
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        //Firebase
-
-        // Write a message to the database
 
         toolbar1 = findViewById(R.id.toolbar1);
 
@@ -181,9 +153,9 @@ public class MainActivity extends AppCompatActivity {
         myDialog = new Dialog(this);
     }
 
-
     // POP UP FOOD //////////////////////////////////food
     public void ShowPopup(View v) {
+        random();
         myDialog.setContentView(R.layout.popup_food);
         txtclose = (TextView) myDialog.findViewById(R.id.txtclose);
         txtclose.setText("X");
@@ -202,8 +174,6 @@ public class MainActivity extends AppCompatActivity {
         txtRandomName.setText(food.getName());
         Picasso.with(this).load(food.getPic()).into(imageView);
         textD.setText(food.getFID());
-
-
     }
     //////////////////////////////////////////////////////food
 
@@ -252,5 +222,44 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_option, menu);
         return true;
+    }
+
+    public void random(){
+        FirebaseDatabase.getInstance().getReference().child("TypeF").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int childcount = safeLongToInt(dataSnapshot.getChildrenCount());
+                selectchild = childcount+"";
+                if(childcount==0)return;
+                Random rand = new Random();
+                int random = rand.nextInt(childcount);
+                selectchild = Integer.toString(random);
+                typeF.setTID(dataSnapshot.child(selectchild).child("TID").getValue().toString());
+//                food.setName(dataSnapshot.child(selectchild).child("TID").getValue().toString());
+                FirebaseDatabase.getInstance().getReference().child("Food").child(typeF.getTID()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int childcount = safeLongToInt(dataSnapshot.getChildrenCount());
+//                        selectchild = childcount+"";
+                        if(childcount==0)return;
+                        Random rand = new Random();
+                        int random = rand.nextInt(childcount);
+                        selectchild = Integer.toString(random);
+                        food.setName(dataSnapshot.child(selectchild).child("Name").getValue().toString());
+                        food.setPic(dataSnapshot.child(selectchild).child("Pic").getValue().toString());
+                        food.setFID(dataSnapshot.child(selectchild).child("FID").getValue().toString());
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
