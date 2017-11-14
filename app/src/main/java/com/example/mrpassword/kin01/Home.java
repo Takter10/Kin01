@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,18 +21,29 @@ import android.widget.Toast;
 import com.example.mrpassword.kin01.Interface.ItemClickListener;
 import com.example.mrpassword.kin01.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    FoodAdapter foodAdapter;
     FirebaseDatabase database ;
     DatabaseReference Food ;
 
     TextView txtFullName ;
     RecyclerView recycler_menu ;
     RecyclerView.LayoutManager layoutManager ;
+
+    List<Food> foodList;
+    int countIndex = 0;
+    List<String> tmpId;
+    private long countFood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,36 +70,93 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         //set Name for user
 
         //Load Menu
+        foodAdapter = new FoodAdapter();
+        foodList = new ArrayList<>();
+        tmpId = new ArrayList<>();
         recycler_menu = (RecyclerView)findViewById(R.id.recycler_menu);
         recycler_menu.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
+        recycler_menu.setAdapter(foodAdapter);
         LoadMenu();
 
     }
 
     private void LoadMenu() {
-        TypeF typeF = new TypeF();
-        FirebaseRecyclerAdapter<Food,MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Food, MenuViewHolder>(Food.class,R.layout.manu_item,MenuViewHolder.class,Food.child(getIntent().getType())) {
+        FirebaseDatabase.getInstance()
+                .getReference()
+                .child("Rest").child("0").child("PFood")
+                .addValueEventListener(new ValueEventListener() {
             @Override
-            protected void populateViewHolder(MenuViewHolder viewHolder, Food model, int position) {
-                //if (model.getFID().substring(0,2).equals("FR")) {
-                    viewHolder.txtMenuName.setText(model.getName());
-                    Picasso.with(getBaseContext()).load(model.getPic())
-                            .into(viewHolder.imageView);
-                //}
-                final Food clickItem = model;
-                viewHolder.setItemClickListener(new ItemClickListener() {
-                    @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                countFood = dataSnapshot.getChildrenCount();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    loadDataFood(snapshot);
+                }
 
-                    //// Open new page///////////////////////////////////////////////////////////
-                    public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(Home.this,""+clickItem.getName(),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+//        FirebaseRecyclerAdapter<Food,MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Food, MenuViewHolder>(Food.class,R.layout.manu_item,MenuViewHolder.class,Food.child(getIntent().getType())) {
+//            @Override
+//            protected void populateViewHolder(MenuViewHolder viewHolder, Food model, int position) {
+//                //if (model.getFID().substring(0,2).equals("FR")) {
+//                    viewHolder.txtMenuName.setText(model.getName());
+//                    Picasso.with(getBaseContext()).load(model.getPic())
+//                            .into(viewHolder.imageView);
+//                //}
+//                final Food clickItem = model;
+//                viewHolder.setItemClickListener(new ItemClickListener() {
+//                    @Override
+//
+//                    //// Open new page///////////////////////////////////////////////////////////
+//                    public void onClick(View view, int position, boolean isLongClick) {
+//                        Toast.makeText(Home.this,""+clickItem.getName(),Toast.LENGTH_LONG).show();
+//                    }
+//                });
+//            }
+//        };
+//        recycler_menu.setAdapter(adapter);
+
+    }
+
+
+    void loadDataFood(final DataSnapshot snapshots){
+        Log.e("ID",snapshots.getKey()+"");
+        FirebaseDatabase.getInstance()
+                .getReference()
+                .child("Food").child(snapshots.getKey().substring(0,2)).child(snapshots.getKey())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                foodList.add(new Food(dataSnapshot.child("FID").getValue()+"",
+                                        dataSnapshot.child("Name").getValue()+"",
+                                        dataSnapshot.child("Pic").getValue()+"",
+                                        snapshots.getValue().toString()
+                                        ));
+                                Log.e("Test Value",""+dataSnapshot.child("FID").getValue()+":"+dataSnapshot.child("Name").getValue()+"");
+
+//                                break;
+
+//                            }
+                        if (countFood == (++countIndex)) {
+                            foodAdapter.setFoodList(foodList);
+                            foodAdapter.notifyDataSetChanged();
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
                     }
                 });
-            }
-        };
-        recycler_menu.setAdapter(adapter);
+
+
     }
 
     @Override

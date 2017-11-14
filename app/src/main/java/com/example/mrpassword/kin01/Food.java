@@ -5,15 +5,19 @@ package com.example.mrpassword.kin01;
  */
 
 public class Food {
-    private String FID,Name,Pic ;
+    private String FID,Name,Pic,Price ;
 
     public Food() {
     }
+//    public Food(String price) {
+//
+//    }
 
-    public Food(String FID, String name, String pic) {
+    public Food(String FID, String name, String pic,String price) {
         this.FID = FID;
         Name = name;
         Pic = pic;
+        Price = price;
     }
 
     public String getFID() {
@@ -39,4 +43,13 @@ public class Food {
     public void setPic(String pic) {
         Pic = pic;
     }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+
 }

@@ -244,7 +244,12 @@ public class MainActivity extends AppCompatActivity {
                         if(childcount==0)return;
                         Random rand = new Random();
                         int random = rand.nextInt(childcount);
-                        selectchild = Integer.toString(random);
+                        selectchild = Integer.toString(random+1);
+                        if (selectchild.length()==1){
+                            selectchild = typeF.getTID()+"0"+selectchild;
+                        }else{
+                            selectchild = typeF.getTID()+selectchild;
+                        }
                         food.setName(dataSnapshot.child(selectchild).child("Name").getValue().toString());
                         food.setPic(dataSnapshot.child(selectchild).child("Pic").getValue().toString());
                         food.setFID(dataSnapshot.child(selectchild).child("FID").getValue().toString());
