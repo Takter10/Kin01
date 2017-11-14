@@ -83,44 +83,47 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     private void LoadMenu() {
-        FirebaseDatabase.getInstance()
-                .getReference()
-                .child("Rest").child("0").child("PFood")
-                .addValueEventListener(new ValueEventListener() {
+        if(getIntent().getType().equals("Rest")){
+            FirebaseDatabase.getInstance()
+                    .getReference()
+                    .child("Rest").child("0").child("PFood")
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            countFood = dataSnapshot.getChildrenCount();
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                loadDataFood(snapshot);
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+        }else if (getIntent().getType().equals("FR")||getIntent().getType().equals("FD")||getIntent().getType().equals("FN")){
+                    FirebaseRecyclerAdapter<Food,MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Food, MenuViewHolder>(Food.class,R.layout.manu_item,MenuViewHolder.class,Food.child(getIntent().getType())) {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                countFood = dataSnapshot.getChildrenCount();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    loadDataFood(snapshot);
-                }
+            protected void populateViewHolder(MenuViewHolder viewHolder, Food model, int position) {
+                //if (model.getFID().substring(0,2).equals("FR")) {
+                    viewHolder.txtMenuName.setText(model.getName());
+                    Picasso.with(getBaseContext()).load(model.getPic())
+                            .into(viewHolder.imageView);
+                //}
+                final Food clickItem = model;
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
 
+                    //// Open new page///////////////////////////////////////////////////////////
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        Toast.makeText(Home.this,""+clickItem.getName(),Toast.LENGTH_LONG).show();
+                    }
+                });
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-//        FirebaseRecyclerAdapter<Food,MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Food, MenuViewHolder>(Food.class,R.layout.manu_item,MenuViewHolder.class,Food.child(getIntent().getType())) {
-//            @Override
-//            protected void populateViewHolder(MenuViewHolder viewHolder, Food model, int position) {
-//                //if (model.getFID().substring(0,2).equals("FR")) {
-//                    viewHolder.txtMenuName.setText(model.getName());
-//                    Picasso.with(getBaseContext()).load(model.getPic())
-//                            .into(viewHolder.imageView);
-//                //}
-//                final Food clickItem = model;
-//                viewHolder.setItemClickListener(new ItemClickListener() {
-//                    @Override
-//
-//                    //// Open new page///////////////////////////////////////////////////////////
-//                    public void onClick(View view, int position, boolean isLongClick) {
-//                        Toast.makeText(Home.this,""+clickItem.getName(),Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//            }
-//        };
-//        recycler_menu.setAdapter(adapter);
+        };
+        recycler_menu.setAdapter(adapter);
+        }
 
     }
 

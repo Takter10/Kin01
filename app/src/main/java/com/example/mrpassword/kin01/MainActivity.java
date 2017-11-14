@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int childcount = safeLongToInt(dataSnapshot.getChildrenCount());
-                selectchild = childcount+"";
+//                selectchild = childcount+"";
                 if(childcount==0)return;
                 Random rand = new Random();
                 int random = rand.nextInt(childcount);
