@@ -143,9 +143,7 @@ public class MainActivity extends AppCompatActivity {
         setToolbar1();
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        toggle = new ActionBarDrawerToggle(MainActivity.this,
-                drawerLayout, R.string.drawer_open, R.string.drawer_close);
-
+        toggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(toggle);
 
         if (savedInstanceState == null) {

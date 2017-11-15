@@ -7,6 +7,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
    >
 
+    <LinearLayout
+        android:layout_width="136dp"
+        android:layout_height="98dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/cardview_dark_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.448">
+
+        <Button
+            android:id="@+id/FR"
+            android:layout_width="115dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="เมนูข้าว"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.403" />
+
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textSimple"
         android:layout_width="wrap_content"
@@ -24,45 +57,69 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.15" />
 
-    <Button
-        android:id="@+id/FR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="136dp"
+        android:layout_height="94dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="เมนูข้าว"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.444"
+        android:background="@color/cardview_dark_background">
 
-    <Button
-        android:id="@+id/FN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/FN"
+            android:layout_width="112dp"
+            android:layout_height="73dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="เมนูเส้น"
+            app:layout_constraintBottom_toTopOf="@+id/FD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/FR"
+            app:layout_constraintVertical_bias="0.642" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="135dp"
+        android:layout_height="106dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="เมนูเส้น"
-        app:layout_constraintBottom_toTopOf="@+id/FD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FR" />
-
-    <Button
-        android:id="@+id/FD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="188dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="เมนูน้ำ"
+        android:layout_marginTop="16dp"
+        android:background="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.732">
+
+        <Button
+            android:id="@+id/FD"
+            android:layout_width="118dp"
+            android:layout_height="94dp"
+            android:layout_marginBottom="120dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="เมนูน้ำ"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.196"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
