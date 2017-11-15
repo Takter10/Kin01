@@ -1,8 +1,6 @@
 package com.example.mrpassword.kin01;
 
 import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -49,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar1;
     ActionBarDrawerToggle toggle;
     private DrawerLayout drawerLayout;
-    String ranName , ranImage ;
+    String ranName, ranImage;
     TextView txtclose;
     Button btnFollow;
-    String selectchild ;
+    String selectchild;
     Food food = new Food();
     TypeF typeF = new TypeF();
 
@@ -112,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.container, SearchFragment.newInstance("Search"))
                 .commit();
     }
+
     private void listfragment() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, ListFragment.newInstance("List"))
@@ -120,9 +119,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Random Function
-    public static int getRandomInteger(int maximum, int minimum){
-        return ((int) (Math.random()*(maximum - minimum))) + minimum;
+    public static int getRandomInteger(int maximum, int minimum) {
+        return ((int) (Math.random() * (maximum - minimum))) + minimum;
     }
+
     public static int safeLongToInt(long l) {
         if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
             throw new IllegalArgumentException
@@ -143,7 +143,9 @@ public class MainActivity extends AppCompatActivity {
         setToolbar1();
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        toggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
+        toggle = new ActionBarDrawerToggle(MainActivity.this,
+                drawerLayout, R.string.drawer_open, R.string.drawer_close);
+
         drawerLayout.addDrawerListener(toggle);
 
         if (savedInstanceState == null) {
@@ -227,13 +229,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void random(){
+    public void random() {
         FirebaseDatabase.getInstance().getReference().child("TypeF").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int childcount = safeLongToInt(dataSnapshot.getChildrenCount());
 //                selectchild = childcount+"";
-                if(childcount==0)return;
+                if (childcount == 0) return;
                 Random rand = new Random();
                 int random = rand.nextInt(childcount);
                 selectchild = Integer.toString(random);
@@ -242,32 +244,31 @@ public class MainActivity extends AppCompatActivity {
                 Switch swfd = (Switch) findViewById(R.id.SWFD);
                 Switch swfr = (Switch) findViewById(R.id.SWFR);
                 Switch swfn = (Switch) findViewById(R.id.SWFN);
-                if (swfd.isChecked()&&swfn.isChecked()&&swfr.isChecked()){
-                    String []tmp = {"FD","FN","FR"};
+                if (swfd.isChecked() && swfn.isChecked() && swfr.isChecked()) {
+                    String[] tmp = {"FD", "FN", "FR"};
                     Random generator = new Random();
                     int randomIndex = generator.nextInt(tmp.length);
                     typeF.setTID(tmp[randomIndex]);
-                }else if (swfd.isChecked()&&swfn.isChecked()){
-                    String []tmp = {"FD","FN"};
+                } else if (swfd.isChecked() && swfn.isChecked()) {
+                    String[] tmp = {"FD", "FN"};
                     Random generator = new Random();
                     int randomIndex = generator.nextInt(tmp.length);
                     typeF.setTID(tmp[randomIndex]);
-                }else if (swfn.isChecked()&&swfr.isChecked()){
-                    String []tmp = {"FN","FR"};
+                } else if (swfn.isChecked() && swfr.isChecked()) {
+                    String[] tmp = {"FN", "FR"};
                     Random generator = new Random();
                     int randomIndex = generator.nextInt(tmp.length);
                     typeF.setTID(tmp[randomIndex]);
-                }else if (swfd.isChecked()&&swfr.isChecked()){
-                    String []tmp = {"FD","FR"};
+                } else if (swfd.isChecked() && swfr.isChecked()) {
+                    String[] tmp = {"FD", "FR"};
                     Random generator = new Random();
                     int randomIndex = generator.nextInt(tmp.length);
                     typeF.setTID(tmp[randomIndex]);
-                }
-                else if (swfn.isChecked()){
+                } else if (swfn.isChecked()) {
                     typeF.setTID("FN");
-                }else if (swfr.isChecked()){
+                } else if (swfr.isChecked()) {
                     typeF.setTID("FR");
-                }else if (swfd.isChecked()){
+                } else if (swfd.isChecked()) {
                     typeF.setTID("FD");
                 }
                 FirebaseDatabase.getInstance().getReference().child("Food").child(typeF.getTID()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -275,19 +276,20 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int childcount = safeLongToInt(dataSnapshot.getChildrenCount());
 //                        selectchild = childcount+"";
-                        if(childcount==0)return;
+                        if (childcount == 0) return;
                         Random rand = new Random();
                         int random = rand.nextInt(childcount);
-                        selectchild = Integer.toString(random+1);
-                        if (selectchild.length()==1){
-                            selectchild = typeF.getTID()+"0"+selectchild;
-                        }else{
-                            selectchild = typeF.getTID()+selectchild;
+                        selectchild = Integer.toString(random + 1);
+                        if (selectchild.length() == 1) {
+                            selectchild = typeF.getTID() + "0" + selectchild;
+                        } else {
+                            selectchild = typeF.getTID() + selectchild;
                         }
                         food.setName(dataSnapshot.child(selectchild).child("Name").getValue().toString());
                         food.setPic(dataSnapshot.child(selectchild).child("Pic").getValue().toString());
                         food.setFID(dataSnapshot.child(selectchild).child("FID").getValue().toString());
                     }
+
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
@@ -295,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
