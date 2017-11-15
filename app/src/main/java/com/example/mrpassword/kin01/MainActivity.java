@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewDebug;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -236,6 +237,37 @@ public class MainActivity extends AppCompatActivity {
                 selectchild = Integer.toString(random);
                 typeF.setTID(dataSnapshot.child(selectchild).child("TID").getValue().toString());
 //                food.setName(dataSnapshot.child(selectchild).child("TID").getValue().toString());
+                Switch swfd = (Switch) findViewById(R.id.SWFD);
+                Switch swfr = (Switch) findViewById(R.id.SWFR);
+                Switch swfn = (Switch) findViewById(R.id.SWFN);
+                if (swfd.isChecked()&&swfn.isChecked()&&swfr.isChecked()){
+                    String []tmp = {"FD","FN","FR"};
+                    Random generator = new Random();
+                    int randomIndex = generator.nextInt(tmp.length);
+                    typeF.setTID(tmp[randomIndex]);
+                }else if (swfd.isChecked()&&swfn.isChecked()){
+                    String []tmp = {"FD","FN"};
+                    Random generator = new Random();
+                    int randomIndex = generator.nextInt(tmp.length);
+                    typeF.setTID(tmp[randomIndex]);
+                }else if (swfn.isChecked()&&swfr.isChecked()){
+                    String []tmp = {"FN","FR"};
+                    Random generator = new Random();
+                    int randomIndex = generator.nextInt(tmp.length);
+                    typeF.setTID(tmp[randomIndex]);
+                }else if (swfd.isChecked()&&swfr.isChecked()){
+                    String []tmp = {"FD","FR"};
+                    Random generator = new Random();
+                    int randomIndex = generator.nextInt(tmp.length);
+                    typeF.setTID(tmp[randomIndex]);
+                }
+                else if (swfn.isChecked()){
+                    typeF.setTID("FN");
+                }else if (swfr.isChecked()){
+                    typeF.setTID("FR");
+                }else if (swfd.isChecked()){
+                    typeF.setTID("FD");
+                }
                 FirebaseDatabase.getInstance().getReference().child("Food").child(typeF.getTID()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

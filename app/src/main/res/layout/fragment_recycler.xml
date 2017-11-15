@@ -8,7 +8,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="230dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -17,10 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@style/CollapedAppBar"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@style/ExpandedAppBar"
-            app:collapsedTitleTextAppearance="@style/CollapedAppBar">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -30,15 +30,14 @@
 
             <Button
                 android:id="@+id/button4"
-                android:textColor="@color/white"
-                android:background="@drawable/buttonstyle"
-                android:backgroundTint="@color/random"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="    Random"
                 android:layout_gravity="center"
+                android:background="@drawable/buttonstyle"
+                android:backgroundTint="@color/random"
                 android:onClick="ShowPopup"
-                />
+                android:text="    Random"
+                android:textColor="@color/white" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar2"
@@ -48,13 +47,42 @@
                 app:title="Home"
                 app:titleTextColor="@color/cardview_dark_background" />
 
+            <Switch
+                android:id="@+id/SWFD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="145dp"
+                android:layout_marginLeft="250dp"
+                android:text="เมนูเน้ำ "
+                android:shadowColor="@android:color/black"/>
+
+            <Switch
+                android:id="@+id/SWFN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="145dp"
+                android:layout_marginLeft="150dp"
+                android:text="เมนูเส้น "
+                android:shadowColor="@android:color/black"/>
+
+            <Switch
+                android:id="@+id/SWFR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="145dp"
+                android:layout_marginLeft="50dp"
+                android:text="เมนูข้าว "
+                android:shadowColor="@android:color/black"
+                app:layout_collapseParallaxMultiplier="0.0" />
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>
