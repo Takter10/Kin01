@@ -1,6 +1,8 @@
 package com.example.mrpassword.kin01;
 
 import android.app.Dialog;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.content.res.Configuration;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     String selectchild ;
     Food food = new Food();
     TypeF typeF = new TypeF();
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener bnvSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {

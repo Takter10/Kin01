@@ -54,7 +54,8 @@
                 android:layout_marginTop="145dp"
                 android:layout_marginLeft="250dp"
                 android:text="เมนูเน้ำ "
-                android:shadowColor="@android:color/black"/>
+                android:shadowColor="@android:color/black"
+                android:background="@color/colorPrimaryDark"/>
 
             <Switch
                 android:id="@+id/SWFN"
@@ -63,7 +64,8 @@
                 android:layout_marginTop="145dp"
                 android:layout_marginLeft="150dp"
                 android:text="เมนูเส้น "
-                android:shadowColor="@android:color/black"/>
+                android:shadowColor="@android:color/black"
+                android:background="@color/colorPrimaryDark"/>
 
             <Switch
                 android:id="@+id/SWFR"
@@ -73,7 +75,8 @@
                 android:layout_marginLeft="50dp"
                 android:text="เมนูข้าว "
                 android:shadowColor="@android:color/black"
-                app:layout_collapseParallaxMultiplier="0.0" />
+                app:layout_collapseParallaxMultiplier="0.0"
+                android:background="@color/colorPrimaryDark"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
