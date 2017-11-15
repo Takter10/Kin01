@@ -158,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         myDialog = new Dialog(this);
     }
 
+
     // POP UP FOOD //////////////////////////////////food
     public void ShowPopup(View v) {
         random();
