@@ -7,7 +7,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar1"
-        app:title="Home"
+        app:title="Kinraidee"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"

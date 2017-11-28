@@ -348,6 +348,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_slideshow:
                 fragmentClass = ThirdFragment.class;
                 break;
+            case R.id.nav_share:
+                fragmentClass = OptionFragment.class;
+                break;
+            case R.id.nav_send:
+                fragmentClass = InfoFragment.class;
+                break;
+            case R.id.log_nav:
+                fragmentClass = LoginFragment.class;
+                break;
             default:
                 fragmentClass = FirstFragment.class;
         }

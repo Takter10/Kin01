@@ -8,7 +8,7 @@
    >
 
     <LinearLayout
-        android:layout_width="136dp"
+        android:layout_width="135dp"
         android:layout_height="98dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -17,10 +17,10 @@
         android:background="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.124"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.448">
+        app:layout_constraintVertical_bias="0.565">
 
         <Button
             android:id="@+id/FR"
@@ -48,34 +48,35 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="ประเภทอาหาร"
+        android:text="เลือกตามประเภทอาหาร"
         android:textColor="@color/bluelight"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0.398" />
 
     <LinearLayout
-        android:layout_width="136dp"
-        android:layout_height="94dp"
+        android:layout_width="135dp"
+        android:layout_height="98dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintHorizontal_bias="0.828"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444"
-        android:background="@color/cardview_dark_background">
+        app:layout_constraintVertical_bias="0.565">
 
         <Button
             android:id="@+id/FN"
-            android:layout_width="112dp"
-            android:layout_height="73dp"
+            android:layout_width="115dp"
+            android:layout_height="75dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -92,26 +93,27 @@
 
     <LinearLayout
         android:layout_width="135dp"
-        android:layout_height="106dp"
+        android:layout_height="98dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintHorizontal_bias="0.124"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732">
+        app:layout_constraintVertical_bias="0.858">
 
         <Button
             android:id="@+id/FD"
-            android:layout_width="118dp"
-            android:layout_height="94dp"
-            android:layout_marginBottom="120dp"
+            android:layout_width="115dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="เมนูน้ำ"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
