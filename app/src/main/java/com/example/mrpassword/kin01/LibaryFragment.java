@@ -18,9 +18,9 @@ import android.widget.Toast;
  */
 
 public class LibaryFragment extends Fragment {
-
-    public LibaryFragment() {
-    }
+//
+//    public LibaryFragment() {
+//    }
 
     public static LibaryFragment newInstance(String text) {
         LibaryFragment lf = new LibaryFragment();
