@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bluelight">
 
     <TextView
         android:id="@+id/textView3"
@@ -32,7 +33,6 @@
         android:onClick="ShowPopup"
         android:src="@drawable/cubes"
         android:textColor="@color/colorPrimaryDark"
-
         app:cb_color="@color/bluelight"
         app:cb_pressedRingWidth="15dip"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +65,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:background="@color/colorPrimaryDark"
+        android:theme="@style/Theme.Design.Light.NoActionBar"
         android:shadowColor="@android:color/black"
         android:text="เมนูเส้น "
         app:layout_constraintEnd_toStartOf="@+id/SWFD"
@@ -80,7 +80,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="28dp"
-        android:background="@color/colorPrimaryDark"
+        android:theme="@style/Theme.Design.Light.NoActionBar"
         android:shadowColor="@android:color/black"
         android:text="เมนูข้าว "
         app:layout_collapseParallaxMultiplier="0.0"
@@ -90,9 +90,4 @@
         tools:ignore="MissingConstraints"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="28dp" />
-
-
-
-
-
 </android.support.constraint.ConstraintLayout>
