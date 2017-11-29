@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
 
             android:shadowColor="@android:color/black"
-            android:text="เมนูเน้ำ "
+            android:text="เมนูน้ำ "
             android:theme="@style/Theme.Design.Light.NoActionBar"
 
             />
