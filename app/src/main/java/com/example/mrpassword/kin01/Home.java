@@ -83,7 +83,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     private void LoadMenu() {
-        if (getIntent().getType().substring(0,4).equals("Rest")) {
+        String temp = getIntent().getType();
+        if (temp.length()>3&&getIntent().getType().substring(0,4).equals("Rest")) {
             FirebaseDatabase.getInstance()
                     .getReference()
                     .child("Rest").child(getIntent().getType().substring(4)).child("PFood")
@@ -102,7 +103,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
                         }
                     });
-        } else if (getIntent().getType().equals("FR") || getIntent().getType().equals("FD") || getIntent().getType().equals("FN")) {
+        }else if (temp.equals("FR") || temp.equals("FD") || temp.equals("FN")) {
             FirebaseRecyclerAdapter<Food, MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Food, MenuViewHolder>(Food.class, R.layout.manu_item, MenuViewHolder.class, Food.child(getIntent().getType())) {
                 @Override
                 protected void populateViewHolder(MenuViewHolder viewHolder, Food model, int position) {
