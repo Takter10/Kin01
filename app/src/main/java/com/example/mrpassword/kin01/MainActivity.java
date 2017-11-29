@@ -184,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
 
         myDialog = new Dialog(this);
 
+
     }
 
 

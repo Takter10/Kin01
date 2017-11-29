@@ -6,7 +6,7 @@
     android:background="@drawable/bg1"
    >
     <RelativeLayout
-        android:paddingTop="50dp"
+        android:paddingTop="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
