@@ -50,7 +50,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:background="@color/colorPrimaryDark"
+        android:theme="@style/Theme.Design.Light.NoActionBar"
         android:shadowColor="@android:color/black"
         android:text="เมนูเน้ำ "
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,9 @@
         app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="28dp" />
 
 
 
