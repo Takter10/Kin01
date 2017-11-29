@@ -70,42 +70,42 @@ public class LibaryFragment extends Fragment {
                 startActivity(homeInent);
             }
         });
-//        LinearLayout cd = (LinearLayout)v.findViewById(R.id.RestCD);
-//        cd.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent homeInent = new Intent(getActivity(),Home.class);
-//                homeInent.setType("Rest0");
-//                startActivity(homeInent);
-//            }
-//        });
-//        LinearLayout nv = (LinearLayout) v.findViewById(R.id.RestNV);
-//        nv.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent homeInent = new Intent(getActivity(),Home.class);
-//                homeInent.setType("Rest1");
-//                startActivity(homeInent);
-//            }
-//        });
-//        LinearLayout az = (LinearLayout)v.findViewById(R.id.RestAz);
-//        az.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent homeInent = new Intent(getActivity(),Home.class);
-//                homeInent.setType("Rest2");
-//                startActivity(homeInent);
-//            }
-//        });
-//        LinearLayout jb = (LinearLayout)v.findViewById(R.id.RestJB);
-//        jb.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent homeInent = new Intent(getActivity(),Home.class);
-//                homeInent.setType("Rest3");
-//                startActivity(homeInent);
-//            }
-//        });
+        LinearLayout cd = (LinearLayout)v.findViewById(R.id.RestCD);
+        cd.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent homeInent = new Intent(getActivity(),Home.class);
+                homeInent.setType("Rest0");
+                startActivity(homeInent);
+            }
+        });
+        LinearLayout nv = (LinearLayout) v.findViewById(R.id.RestNV);
+        nv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent homeInent = new Intent(getActivity(),Home.class);
+                homeInent.setType("Rest1");
+                startActivity(homeInent);
+            }
+        });
+        LinearLayout az = (LinearLayout)v.findViewById(R.id.RestAz);
+        az.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent homeInent = new Intent(getActivity(),Home.class);
+                homeInent.setType("Rest2");
+                startActivity(homeInent);
+            }
+        });
+        LinearLayout jb = (LinearLayout)v.findViewById(R.id.RestJB);
+        jb.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent homeInent = new Intent(getActivity(),Home.class);
+                homeInent.setType("Rest3");
+                startActivity(homeInent);
+            }
+        });
         return v;
     }
 
