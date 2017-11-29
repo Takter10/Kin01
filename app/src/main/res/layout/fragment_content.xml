@@ -20,6 +20,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+</LinearLayout>
 
     <at.markushi.ui.CircleButton
         android:id="@+id/button4"
@@ -38,56 +44,52 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.048"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.314"
         tools:ignore="MissingConstraints" />
 
-
-    <Switch
-        android:id="@+id/SWFD"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="188dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:theme="@style/Theme.Design.Light.NoActionBar"
-        android:shadowColor="@android:color/black"
-        android:text="เมนูเน้ำ "
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Switch
-        android:id="@+id/SWFN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:theme="@style/Theme.Design.Light.NoActionBar"
-        android:shadowColor="@android:color/black"
-        android:text="เมนูเส้น "
-        app:layout_constraintEnd_toStartOf="@+id/SWFD"
-        app:layout_constraintStart_toEndOf="@+id/SWFR"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        tools:ignore="MissingConstraints" />
+        <Switch
+            android:id="@+id/SWFD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <Switch
-        android:id="@+id/SWFR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
-        android:theme="@style/Theme.Design.Light.NoActionBar"
-        android:shadowColor="@android:color/black"
-        android:text="เมนูข้าว "
-        app:layout_collapseParallaxMultiplier="0.0"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        tools:ignore="MissingConstraints"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="28dp" />
+            android:shadowColor="@android:color/black"
+            android:text="เมนูเน้ำ "
+            android:theme="@style/Theme.Design.Light.NoActionBar"
+
+            />
+
+        <Switch
+            android:id="@+id/SWFN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:shadowColor="@android:color/black"
+            android:text="เมนูเส้น "
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
+        <Switch
+            android:id="@+id/SWFR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:shadowColor="@android:color/black"
+            android:text="เมนูข้าว "
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
