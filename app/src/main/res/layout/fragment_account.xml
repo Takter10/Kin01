@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131" />
+        app:layout_constraintVertical_bias="0.082" />
 
     <TextView
         android:id="@+id/name_pro"
@@ -80,7 +80,7 @@
             <ImageView
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:src="@drawable/toua" />
+                android:src="@drawable/tom" />
 
 
             <ImageView
@@ -134,7 +134,7 @@
             <ImageView
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:src="@drawable/toua" />
+                android:src="@drawable/tom" />
 
 
             <ImageView
