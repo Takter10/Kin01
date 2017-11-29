@@ -83,10 +83,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     private void LoadMenu() {
-        if (getIntent().getType().equals("Rest")) {
+        if (getIntent().getType().substring(0,4).equals("Rest")) {
             FirebaseDatabase.getInstance()
                     .getReference()
-                    .child("Rest").child("0").child("PFood")
+                    .child("Rest").child(getIntent().getType().substring(4)).child("PFood")
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {

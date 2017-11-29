@@ -73,7 +73,34 @@ public class LibaryFragment extends Fragment {
             @Override
             public void onClick(View v){
                 Intent homeInent = new Intent(getActivity(),Home.class);
-                homeInent.setType("Rest");
+                homeInent.setType("Rest0");
+                startActivity(homeInent);
+            }
+        });
+        Button nv = (Button)v.findViewById(R.id.RestNV);
+        nv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent homeInent = new Intent(getActivity(),Home.class);
+                homeInent.setType("Rest1");
+                startActivity(homeInent);
+            }
+        });
+        Button az = (Button)v.findViewById(R.id.RestAz);
+        az.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent homeInent = new Intent(getActivity(),Home.class);
+                homeInent.setType("Rest2");
+                startActivity(homeInent);
+            }
+        });
+        Button jb = (Button)v.findViewById(R.id.RestJB);
+        jb.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent homeInent = new Intent(getActivity(),Home.class);
+                homeInent.setType("Rest3");
                 startActivity(homeInent);
             }
         });

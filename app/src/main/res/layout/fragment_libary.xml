@@ -59,6 +59,7 @@
         app:layout_constraintVertical_bias="0.068" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="135dp"
         android:layout_height="98dp"
         android:layout_marginBottom="8dp"
@@ -123,6 +124,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="135dp"
         android:layout_height="98dp"
         android:layout_marginBottom="8dp"
@@ -135,7 +137,7 @@
         app:layout_constraintHorizontal_bias="0.828"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.858">
+        app:layout_constraintVertical_bias="0.498">
 
         <Button
             android:id="@+id/RestCD"
@@ -155,7 +157,55 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="254dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/cardview_dark_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.836">
 
+
+        <Button
+            android:id="@+id/RestNV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:text="หน้าแว่น"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="234dp" />
+
+        <Button
+            android:id="@+id/RestAz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingRight="10dp"
+            android:text="อะเมซอน"
+            app:layout_constraintBottom_toTopOf="@+id/button6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout" />
+
+        <Button
+            android:id="@+id/RestJB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:text="จัีบบอส"
+            app:layout_constraintBottom_toTopOf="@+id/button5"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintVertical_bias="0.985"
+            tools:layout_editor_absoluteX="234dp" />
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
