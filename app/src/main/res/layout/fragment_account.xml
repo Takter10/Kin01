@@ -111,6 +111,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <HorizontalScrollView
+        android:id="@+id/Ho_fl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -150,6 +151,7 @@
 
 
     </HorizontalScrollView>
+
 
 
 
