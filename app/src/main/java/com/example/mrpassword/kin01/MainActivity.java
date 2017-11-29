@@ -1,9 +1,11 @@
 package com.example.mrpassword.kin01;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -17,13 +19,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.content.res.Configuration;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewDebug;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +46,7 @@ import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 
@@ -56,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     String selectchild;
     Food food = new Food();
     TypeF typeF = new TypeF();
-
+    ArrayList<String> restlist ;
 
     private BottomNavigationView.OnNavigationItemSelectedListener bnvSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -147,6 +154,10 @@ public class MainActivity extends AppCompatActivity {
 //        TextView textView = (TextView) findViewById(R.id.textView3);
 //        textView.setTextAppearance(getCallingActivity(),R.style.);
 //
+//
+//        String names[] ={"A\t\t\t\t 50 บาท","B\t\t\t\t 50 บาท","C\t\t\t\t50 บาท","D\t\t\t\t 50 บาท"};
+
+
         setToolbar1();
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -172,10 +183,12 @@ public class MainActivity extends AppCompatActivity {
         bnv.setOnNavigationItemReselectedListener(bnvReselectedListener);
 
         myDialog = new Dialog(this);
+
     }
 
 
     // POP UP FOOD //////////////////////////////////food
+    TextView txtRandomName;
     public void ShowPopup(View v) {
         random();
         myDialog.setContentView(R.layout.popup_food);
@@ -188,14 +201,34 @@ public class MainActivity extends AppCompatActivity {
                 myDialog.dismiss();
             }
         });
+        btnFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (food.getName()!=null){
+                    showrest();
+                }
+            }
+        });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
-        TextView txtRandomName = (TextView) myDialog.findViewById(R.id.ranName);
+        txtRandomName = (TextView) myDialog.findViewById(R.id.ranName);
         ImageView imageView = (ImageView) myDialog.findViewById(R.id.ranImage);
         TextView textD = (TextView) myDialog.findViewById(R.id.food_dis);
+
         txtRandomName.setText(food.getName());
         Picasso.with(this).load(food.getPic()).into(imageView);
         textD.setText(food.getFID());
+    }
+    void showrest(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View convertView = (View) inflater.inflate(R.layout.showrest, null);
+        alertDialog.setView(convertView);
+        alertDialog.setTitle("ร้านหารที่ขาย "+txtRandomName.getText());
+        ListView lv = (ListView) convertView.findViewById(R.id.listView1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,restlist);
+        lv.setAdapter(adapter);
+        alertDialog.show();
     }
     //////////////////////////////////////////////////////food
 
@@ -306,9 +339,12 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             selectchild = typeF.getTID() + selectchild;
                         }
-                        food.setName(dataSnapshot.child(selectchild).child("Name").getValue().toString());
-                        food.setPic(dataSnapshot.child(selectchild).child("Pic").getValue().toString());
-                        food.setFID(dataSnapshot.child(selectchild).child("FID").getValue().toString());
+                        if (dataSnapshot.child(selectchild).getValue().toString()!=null){
+                            food.setName(dataSnapshot.child(selectchild).child("Name").getValue().toString());
+                            food.setPic(dataSnapshot.child(selectchild).child("Pic").getValue().toString());
+                            food.setFID(dataSnapshot.child(selectchild).child("FID").getValue().toString());
+                        }
+
                     }
 
                     @Override
@@ -317,6 +353,35 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        restlist = new ArrayList<>();
+        FirebaseDatabase.getInstance().getReference().child("Rest").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    Log.e("ListRest-----",snapshot.getValue().toString());
+                    for (DataSnapshot snapshot1 : snapshot.child("PFood").getChildren()) {
+//                        Log.e("ListRest",snapshot.child("PFood").getValue().toString());
+
+                        if (snapshot1.getKey().equals(food.getFID())) {
+                            String format = "%-30s%-12s";
+                            String first = snapshot.child("Name").getValue().toString();
+                            String price = snapshot1.getValue().toString();
+
+                            String headerText = String.format(format, first, price);
+                            restlist.add(headerText);
+                            Log.e("ListRest", restlist.toString());
+                        }
+                    }
+
+                }
             }
 
             @Override
