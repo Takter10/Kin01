@@ -65,7 +65,7 @@
         android:layout_marginTop="25dp"
         android:background="@drawable/buttonstyle"
         android:textAlignment="center"
-        android:text="    ร้านอาหาร"
+        android:text="ร้านอาหาร"
         android:textColor="@color/white" />
 
 </LinearLayout>

@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
         txtRandomName.setText(food.getName());
         Picasso.with(this).load(food.getPic()).into(imageView);
-        textD.setText(food.getFID());
+        textD.setText("______________");
     }
     void showrest(){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
@@ -371,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
 //                        Log.e("ListRest",snapshot.child("PFood").getValue().toString());
 
                         if (snapshot1.getKey().equals(food.getFID())) {
-                            String format = "%-30s%-12s ";
+                            String format = "%-30s ราคา %-3s บาท";
                             String first = snapshot.child("Name").getValue().toString();
                             String price = snapshot1.getValue().toString();
 
