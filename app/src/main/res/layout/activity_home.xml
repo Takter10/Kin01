@@ -9,6 +9,9 @@
     android:background="@drawable/background_drawable"
     >
 
+
+
+
     <include
         layout="@layout/app_bar_home"
         android:layout_width="match_parent"
