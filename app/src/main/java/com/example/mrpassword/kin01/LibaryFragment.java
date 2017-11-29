@@ -68,6 +68,15 @@ public class LibaryFragment extends Fragment {
                 startActivity(homeInent);
             }
         });
+        Button cd = (Button)v.findViewById(R.id.RestCD);
+        cd.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent homeInent = new Intent(getActivity(),Home.class);
+                homeInent.setType("Rest");
+                startActivity(homeInent);
+            }
+        });
         return v;
     }
 

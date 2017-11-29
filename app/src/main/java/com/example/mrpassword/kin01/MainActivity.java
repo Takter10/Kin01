@@ -144,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar1 = findViewById(R.id.toolbar1);
 
+//        TextView textView = (TextView) findViewById(R.id.textView3);
+//        textView.setTextAppearance(getCallingActivity(),R.style.);
+//
         setToolbar1();
 
         drawerLayout = findViewById(R.id.drawer_layout);

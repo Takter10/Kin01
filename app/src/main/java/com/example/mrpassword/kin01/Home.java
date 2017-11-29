@@ -83,7 +83,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     private void LoadMenu() {
-        if(getIntent().getType().equals("Rest")){
+        if (getIntent().getType().equals("Rest")) {
             FirebaseDatabase.getInstance()
                     .getReference()
                     .child("Rest").child("0").child("PFood")
@@ -102,27 +102,27 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
                         }
                     });
-        }else if (getIntent().getType().equals("FR")||getIntent().getType().equals("FD")||getIntent().getType().equals("FN")){
-                    FirebaseRecyclerAdapter<Food,MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Food, MenuViewHolder>(Food.class,R.layout.manu_item,MenuViewHolder.class,Food.child(getIntent().getType())) {
-            @Override
-            protected void populateViewHolder(MenuViewHolder viewHolder, Food model, int position) {
-                //if (model.getFID().substring(0,2).equals("FR")) {
+        } else if (getIntent().getType().equals("FR") || getIntent().getType().equals("FD") || getIntent().getType().equals("FN")) {
+            FirebaseRecyclerAdapter<Food, MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Food, MenuViewHolder>(Food.class, R.layout.manu_item, MenuViewHolder.class, Food.child(getIntent().getType())) {
+                @Override
+                protected void populateViewHolder(MenuViewHolder viewHolder, Food model, int position) {
+                    //if (model.getFID().substring(0,2).equals("FR")) {
                     viewHolder.txtMenuName.setText(model.getName());
                     Picasso.with(getBaseContext()).load(model.getPic())
                             .into(viewHolder.imageView);
-                //}
-                final Food clickItem = model;
-                viewHolder.setItemClickListener(new ItemClickListener() {
-                    @Override
+                    //}
+                    final Food clickItem = model;
+                    viewHolder.setItemClickListener(new ItemClickListener() {
+                        @Override
 
-                    //// Open new page///////////////////////////////////////////////////////////
-                    public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(Home.this,""+clickItem.getName(),Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        };
-        recycler_menu.setAdapter(adapter);
+                        //// Open new page///////////////////////////////////////////////////////////
+                        public void onClick(View view, int position, boolean isLongClick) {
+                            Toast.makeText(Home.this, "" + clickItem.getName(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            };
+            recycler_menu.setAdapter(adapter);
         }
 
     }
