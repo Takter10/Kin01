@@ -371,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
 //                        Log.e("ListRest",snapshot.child("PFood").getValue().toString());
 
                         if (snapshot1.getKey().equals(food.getFID())) {
-                            String format = "%-30s%-12s";
+                            String format = "%-30s%-12s ";
                             String first = snapshot.child("Name").getValue().toString();
                             String price = snapshot1.getValue().toString();
 
